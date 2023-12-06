@@ -81,7 +81,7 @@ class Game {
 
   factory Game.fromRawJson(String str) => Game.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  //String toRawJson() => json.encode(toJson());
 
   factory Game.fromJson(Map<String, dynamic> json) => Game(
         images: Images.fromJson(json["images"]),

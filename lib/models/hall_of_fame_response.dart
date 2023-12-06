@@ -3,6 +3,7 @@ import 'package:opencritic_app/models/game.dart';
 
 //R
 class HallOfFameResponse {
+  List<Game> results;
   String name;
   int id;
   DateTime firstReleaseDate;
@@ -11,6 +12,7 @@ class HallOfFameResponse {
   int topCriticScore;
 
   HallOfFameResponse({
+    required this.results,
     required this.name,
     required this.id,
     required this.firstReleaseDate,
@@ -32,6 +34,7 @@ class HallOfFameResponse {
         tier: tierValues.map[json["tier"]]!,
         images: Images.fromJson(json["images"]),
         topCriticScore: json["topCriticScore"],
+        results: List<Game>.from(json["results"].map((x) => Game.fromJson(x))),
       );
 
   /*Map<String, dynamic> toJson() => {
