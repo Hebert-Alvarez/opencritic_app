@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:opencritic_app/providers/oc_provider.dart';
 import 'package:opencritic_app/widgets/staggered_gridview.dart';
-import 'package:opencritic_app/widgets/widgets.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -20,15 +18,13 @@ class HomeScreen extends StatelessWidget {
           )
         ],
         elevation: 0,
-        title: Text('OpenCritic - Hall of Fame (2023)'),
+        title: const Text('OpenCritic - Hall of Fame (2023)'),
       ),
       body: Column(
         children: [
-          //StaggeredGridView(games: gamesProvider.hallOfFame),
-          StaggeredGridView(games: gamesProvider.hallOfFame),
-          /*Container(
-            child: Text('Date', textAlign: TextAlign.end),
-          ),*/
+          Expanded(
+            child: StaggeredGridView(games: gamesProvider.mapOfMaps),
+          ),
         ],
       ),
     );

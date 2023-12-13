@@ -79,6 +79,27 @@ class Game {
     required this.url,
   });
 
+  /*get smBoxImage {
+    if (this.images != null &&
+        this.images.box != null &&
+        this.images.box.og != null) {
+      print('theres an image!');
+      return 'https://opencritic-api.p.rapidapi.com/${this.id}/o/${this.images.box.og}';
+    } else {
+      print('no image :(');
+      return 'https://i.stack.imgur.com/GNhxO.png';
+    } // Default image if not found
+  }*/
+
+  /*get fullBoxImage {
+    //Si el if tiene solo una línea de código después del check, se puede quedar sin llaves
+    if (this.images != null) return 'game/';
+    id;
+    '/o/MPo6LRsJ.jpg${this.images}';
+//Imagen por defecto
+    return 'https://i.stack.imgur.com/GNhxO.png';
+  }*/
+
   factory Game.fromRawJson(String str) => Game.fromJson(json.decode(str));
 
   //String toRawJson() => json.encode(toJson());
@@ -126,7 +147,7 @@ class Game {
         url: json["url"],
       );
 
-  Map<String, dynamic> toJson() => {
+  /*Map<String, dynamic> toJson() => {
         "images": images.toJson(),
         "Rating": rating.toJson(),
         "hasLootBoxes": hasLootBoxes,
@@ -161,7 +182,7 @@ class Game {
         "tenthReviewDate": tenthReviewDate.toIso8601String(),
         "criticalReviewDate": criticalReviewDate.toIso8601String(),
         "url": url,
-      };
+      };*/
 }
 
 class Affiliate {
@@ -176,17 +197,17 @@ class Affiliate {
   factory Affiliate.fromRawJson(String str) =>
       Affiliate.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  //String toRawJson() => json.encode(toJson());
 
   factory Affiliate.fromJson(Map<String, dynamic> json) => Affiliate(
         externalUrl: json["externalUrl"],
         name: json["name"],
       );
 
-  Map<String, dynamic> toJson() => {
+  /*Map<String, dynamic> toJson() => {
         "externalUrl": externalUrl,
         "name": name,
-      };
+      };*/
 }
 
 class BannerScreenshot {
@@ -199,16 +220,16 @@ class BannerScreenshot {
   factory BannerScreenshot.fromRawJson(String str) =>
       BannerScreenshot.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  //String toRawJson() => json.encode(toJson());
 
   factory BannerScreenshot.fromJson(Map<String, dynamic> json) =>
       BannerScreenshot(
         fullRes: json["fullRes"],
       );
 
-  Map<String, dynamic> toJson() => {
+  /*Map<String, dynamic> toJson() => {
         "fullRes": fullRes,
-      };
+      };*/
 }
 
 class Company {
@@ -222,17 +243,17 @@ class Company {
 
   factory Company.fromRawJson(String str) => Company.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  //String toRawJson() => json.encode(toJson());
 
   factory Company.fromJson(Map<String, dynamic> json) => Company(
         name: json["name"],
         type: json["type"],
       );
 
-  Map<String, dynamic> toJson() => {
+  /*Map<String, dynamic> toJson() => {
         "name": name,
         "type": type,
-      };
+      };*/
 }
 
 class Genre {
@@ -246,17 +267,17 @@ class Genre {
 
   factory Genre.fromRawJson(String str) => Genre.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  //String toRawJson() => json.encode(toJson());
 
   factory Genre.fromJson(Map<String, dynamic> json) => Genre(
         id: json["id"],
         name: json["name"],
       );
 
-  Map<String, dynamic> toJson() => {
+  /*Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
-      };
+      };*/
 }
 
 class Images {
@@ -278,7 +299,7 @@ class Images {
 
   factory Images.fromRawJson(String str) => Images.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  //String toRawJson() => json.encode(toJson());
 
   factory Images.fromJson(Map<String, dynamic> json) => Images(
         box: Banner.fromJson(json["box"]),
@@ -290,14 +311,14 @@ class Images {
             json["screenshots"].map((x) => ImagesScreenshot.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
+  /*Map<String, dynamic> toJson() => {
         "box": box.toJson(),
         "square": square.toJson(),
         "masthead": masthead.toJson(),
         "banner": banner.toJson(),
         "logo": logo.toJson(),
         "screenshots": List<dynamic>.from(screenshots.map((x) => x.toJson())),
-      };
+      };*/
 }
 
 class Banner {
@@ -311,17 +332,17 @@ class Banner {
 
   factory Banner.fromRawJson(String str) => Banner.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  //String toRawJson() => json.encode(toJson());
 
   factory Banner.fromJson(Map<String, dynamic> json) => Banner(
         og: json["og"],
         sm: json["sm"],
       );
 
-  Map<String, dynamic> toJson() => {
+  /*Map<String, dynamic> toJson() => {
         "og": og,
         "sm": sm,
-      };
+      };*/
 }
 
 class Logo {
@@ -333,15 +354,15 @@ class Logo {
 
   factory Logo.fromRawJson(String str) => Logo.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  //String toRawJson() => json.encode(toJson());
 
   factory Logo.fromJson(Map<String, dynamic> json) => Logo(
         og: json["og"],
       );
 
-  Map<String, dynamic> toJson() => {
+  /*Map<String, dynamic> toJson() => {
         "og": og,
-      };
+      };*/
 }
 
 class Masthead {
@@ -364,7 +385,7 @@ class Masthead {
   factory Masthead.fromRawJson(String str) =>
       Masthead.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  //String toRawJson() => json.encode(toJson());
 
   factory Masthead.fromJson(Map<String, dynamic> json) => Masthead(
         og: json["og"],
@@ -375,14 +396,14 @@ class Masthead {
         xl: json["xl"],
       );
 
-  Map<String, dynamic> toJson() => {
+  /*Map<String, dynamic> toJson() => {
         "og": og,
         "xs": xs,
         "sm": sm,
         "md": md,
         "lg": lg,
         "xl": xl,
-      };
+      };*/
 }
 
 class ImagesScreenshot {
@@ -399,7 +420,7 @@ class ImagesScreenshot {
   factory ImagesScreenshot.fromRawJson(String str) =>
       ImagesScreenshot.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  //String toRawJson() => json.encode(toJson());
 
   factory ImagesScreenshot.fromJson(Map<String, dynamic> json) =>
       ImagesScreenshot(
@@ -408,11 +429,11 @@ class ImagesScreenshot {
         sm: json["sm"],
       );
 
-  Map<String, dynamic> toJson() => {
+  /*Map<String, dynamic> toJson() => {
         "_id": id,
         "og": og,
         "sm": sm,
-      };
+      };*/
 }
 
 class Square {
@@ -430,7 +451,7 @@ class Square {
 
   factory Square.fromRawJson(String str) => Square.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  //String toRawJson() => json.encode(toJson());
 
   factory Square.fromJson(Map<String, dynamic> json) => Square(
         og: json["og"],
@@ -439,12 +460,12 @@ class Square {
         lg: json["lg"],
       );
 
-  Map<String, dynamic> toJson() => {
+  /*Map<String, dynamic> toJson() => {
         "og": og,
         "xs": xs,
         "sm": sm,
         "lg": lg,
-      };
+      };*/
 }
 
 class Screenshot {
@@ -459,17 +480,17 @@ class Screenshot {
   factory Screenshot.fromRawJson(String str) =>
       Screenshot.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  //String toRawJson() => json.encode(toJson());
 
   factory Screenshot.fromJson(Map<String, dynamic> json) => Screenshot(
         fullRes: json["fullRes"],
         thumbnail: json["thumbnail"],
       );
 
-  Map<String, dynamic> toJson() => {
+  /*Map<String, dynamic> toJson() => {
         "fullRes": fullRes,
         "thumbnail": thumbnail,
-      };
+      };*/
 }
 
 class Platform {
@@ -492,7 +513,7 @@ class Platform {
   factory Platform.fromRawJson(String str) =>
       Platform.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  //String toRawJson() => json.encode(toJson());
 
   factory Platform.fromJson(Map<String, dynamic> json) => Platform(
         id: json["id"],
@@ -503,14 +524,14 @@ class Platform {
         displayRelease: json["displayRelease"],
       );
 
-  Map<String, dynamic> toJson() => {
+  /*Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
         "shortName": shortName,
         "imageSrc": imageSrc,
         "releaseDate": releaseDate.toIso8601String(),
         "displayRelease": displayRelease,
-      };
+      };*/
 }
 
 class Rating {
@@ -522,15 +543,15 @@ class Rating {
 
   factory Rating.fromRawJson(String str) => Rating.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  //String toRawJson() => json.encode(toJson());
 
   factory Rating.fromJson(Map<String, dynamic> json) => Rating(
         imageSrc: json["imageSrc"],
       );
 
-  Map<String, dynamic> toJson() => {
+  /*Map<String, dynamic> toJson() => {
         "imageSrc": imageSrc,
-      };
+      };*/
 }
 
 class GameScreenshot {
@@ -547,7 +568,7 @@ class GameScreenshot {
   factory GameScreenshot.fromRawJson(String str) =>
       GameScreenshot.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  //String toRawJson() => json.encode(toJson());
 
   factory GameScreenshot.fromJson(Map<String, dynamic> json) => GameScreenshot(
         id: json["_id"],
@@ -555,11 +576,11 @@ class GameScreenshot {
         thumbnail: json["thumbnail"],
       );
 
-  Map<String, dynamic> toJson() => {
+  /*Map<String, dynamic> toJson() => {
         "_id": id,
         "fullRes": fullRes,
         "thumbnail": thumbnail,
-      };
+      };*/
 }
 
 class Trailer {
@@ -583,7 +604,7 @@ class Trailer {
 
   factory Trailer.fromRawJson(String str) => Trailer.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  //String toRawJson() => json.encode(toJson());
 
   factory Trailer.fromJson(Map<String, dynamic> json) => Trailer(
         title: json["title"],
@@ -595,7 +616,7 @@ class Trailer {
         publishedDate: DateTime.parse(json["publishedDate"]),
       );
 
-  Map<String, dynamic> toJson() => {
+  /*Map<String, dynamic> toJson() => {
         "title": title,
         "videoId": videoId,
         "channelId": channelId,
@@ -603,5 +624,5 @@ class Trailer {
         "externalUrl": externalUrl,
         "channelTitle": channelTitle,
         "publishedDate": publishedDate.toIso8601String(),
-      };
+      };*/
 }

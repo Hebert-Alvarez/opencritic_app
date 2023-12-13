@@ -1,9 +1,6 @@
 import 'dart:convert';
-import 'package:opencritic_app/models/game.dart';
 
-//R
 class HallOfFameResponse {
-  List<Game> results;
   String name;
   int id;
   DateTime firstReleaseDate;
@@ -12,7 +9,6 @@ class HallOfFameResponse {
   int topCriticScore;
 
   HallOfFameResponse({
-    required this.results,
     required this.name,
     required this.id,
     required this.firstReleaseDate,
@@ -34,7 +30,6 @@ class HallOfFameResponse {
         tier: tierValues.map[json["tier"]]!,
         images: Images.fromJson(json["images"]),
         topCriticScore: json["topCriticScore"],
-        results: List<Game>.from(json["results"].map((x) => Game.fromJson(x))),
       );
 
   /*Map<String, dynamic> toJson() => {
@@ -58,17 +53,17 @@ class Images {
 
   factory Images.fromRawJson(String str) => Images.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  //String toRawJson() => json.encode(toJson());
 
   factory Images.fromJson(Map<String, dynamic> json) => Images(
         box: Banner.fromJson(json["box"]),
         banner: Banner.fromJson(json["banner"]),
       );
 
-  Map<String, dynamic> toJson() => {
+  /*Map<String, dynamic> toJson() => {
         "box": box.toJson(),
         "banner": banner.toJson(),
-      };
+      };*/
 }
 
 class Banner {
@@ -82,17 +77,17 @@ class Banner {
 
   factory Banner.fromRawJson(String str) => Banner.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  //String toRawJson() => json.encode(toJson());
 
   factory Banner.fromJson(Map<String, dynamic> json) => Banner(
         og: json["og"],
         sm: json["sm"],
       );
 
-  Map<String, dynamic> toJson() => {
+  /*Map<String, dynamic> toJson() => {
         "og": og,
         "sm": sm,
-      };
+      };*/
 }
 
 enum Tier { MIGHTY }
