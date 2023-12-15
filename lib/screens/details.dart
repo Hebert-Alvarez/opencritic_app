@@ -1,5 +1,6 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:opencritic_app/models/game.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DetailsScreen extends StatelessWidget {
   final Map<String, dynamic> game;
@@ -94,11 +95,46 @@ class DetailsScreen extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _saveAsFavorite(context),
+        child: Icon(Icons.favorite), // Replace with your desired icon
+        tooltip: 'Favorites', // Tooltip for the button
+      ),
     );
   }
 
   String _getPlatforms(List<dynamic> platforms) {
     // Assuming 'Platforms' is a list of maps with 'name' property for each platform
     return platforms.map((platform) => platform['name']).join(', ');
+  }
+
+  Future<void> _saveAsFavorite(BuildContext context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    final String key = 'favorite_${game['name']}';
+
+    // Prepare the data to be stored
+    Map<String, dynamic> favoriteData = {
+      'name': game['name'] ?? 'Unknown',
+      'firstReleaseDate': game['firstReleaseDate'] ?? 'Unknown',
+      'tier': game['tier'] ?? 'Unknown',
+      'boxOg': game['images']['box']['og'] ?? 'assets/no-image.jpg',
+      'topCriticScore': game['topCriticScore'] ?? 'Unknown',
+      'developer': game.containsKey('Companies') &&
+              game['Companies'] != null &&
+              game['Companies'].isNotEmpty
+          ? game['Companies'][0]['name']
+          : 'Unknown',
+    };
+
+    // Convert the Map to a JSON string
+    String jsonData = json.encode(favoriteData);
+
+    // Save the JSON string into SharedPreferences
+    await prefs.setString(key, jsonData);
+
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text('Added to favorites: ${game['name']}'),
+    ));
   }
 }

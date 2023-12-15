@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:opencritic_app/models/game.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ListViewWidget extends StatelessWidget {
   final Map<String, dynamic> games;
@@ -27,13 +27,7 @@ class ListViewWidget extends StatelessWidget {
             var firstReleaseDate = game['firstReleaseDate'];
             var tier = game['tier'] ?? 'Unknown';
             var boxOg = game['images']['box']['og'] ?? 'assets/no-image.jpg';
-            var boxSm = game['images']['box']['sm'] ?? 'assets/no-image.jpg';
-            var bannerOg =
-                game['images']['banner']['og'] ?? 'assets/no-image.jpg';
-            var bannerSm =
-                game['images']['banner']['sm'] ?? 'assets/no-image.jpg';
             var topCriticScore = game['topCriticScore'] ?? 'Unknown';
-
             var Developer = game.containsKey('Companies') &&
                     game['Companies'] != null &&
                     game['Companies'].isNotEmpty
