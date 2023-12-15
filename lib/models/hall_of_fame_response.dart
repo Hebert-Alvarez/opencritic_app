@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:intl/intl.dart';
 
 class HallOfFameResponse {
   String name;
@@ -26,11 +27,22 @@ class HallOfFameResponse {
       HallOfFameResponse(
         name: json["name"],
         id: json["id"],
-        firstReleaseDate: DateTime.parse(json["firstReleaseDate"]),
+        //firstReleaseDate: DateTime.parse(json["firstReleaseDate"]),
+        firstReleaseDate: _parseDate(json["firstReleaseDate"]),
         tier: tierValues.map[json["tier"]]!,
         images: Images.fromJson(json["images"]),
         topCriticScore: json["topCriticScore"],
       );
+
+  static DateTime _parseDate(dynamic dateString) {
+    DateTime parsedDate = DateTime.parse(dateString);
+    return parsedDate;
+  }
+
+  String getFormattedDate() {
+    DateFormat formatter = DateFormat('yyyy MMMM d');
+    return formatter.format(firstReleaseDate);
+  }
 
   /*Map<String, dynamic> toJson() => {
         "name": name,
@@ -90,9 +102,9 @@ class Banner {
       };*/
 }
 
-enum Tier { MIGHTY }
+enum Tier { Mighty }
 
-final tierValues = EnumValues({"Mighty": Tier.MIGHTY});
+final tierValues = EnumValues({"Mighty": Tier.Mighty});
 
 class EnumValues<T> {
   Map<String, T> map;

@@ -37,6 +37,28 @@ class GameProvider extends ChangeNotifier {
         mapOfMaps = {};
 
         for (int i = 0; i < listOfMaps.length; i++) {
+          var hallOfFameResponse = HallOfFameResponse.fromJson(listOfMaps[i]);
+          mapOfMaps[hallOfFameResponse.name] = {
+            'id': hallOfFameResponse.id,
+            'firstReleaseDate':
+                hallOfFameResponse.getFormattedDate(), // Format the date here
+            'tier': listOfMaps[i]['tier'],
+            //'tier': hallOfFameResponse.tier,
+            'images': {
+              'box': {
+                'og': hallOfFameResponse.images.box.og,
+                'sm': hallOfFameResponse.images.box.sm,
+              },
+              'banner': {
+                'og': hallOfFameResponse.images.banner.og,
+                'sm': hallOfFameResponse.images.banner.sm,
+              },
+            },
+            'topCriticScore': hallOfFameResponse.topCriticScore,
+          };
+        }
+
+        /*for (int i = 0; i < listOfMaps.length; i++) {
           mapOfMaps[listOfMaps[i]['name']] = {
             'id': listOfMaps[i]['id'],
             'firstReleaseDate': listOfMaps[i]['firstReleaseDate'],
@@ -53,7 +75,12 @@ class GameProvider extends ChangeNotifier {
             },
             'topCriticScore': listOfMaps[i]['topCriticScore'],
           };
-        }
+        }*/
+
+        mapOfMaps.forEach((key, value) {
+          print('Map with Name: $key');
+          print(value); // This will print the content of each map
+        });
       }
     } else {
       //No llamará a la api

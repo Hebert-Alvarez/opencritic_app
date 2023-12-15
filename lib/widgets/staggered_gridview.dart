@@ -1,7 +1,4 @@
-import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
-import 'package:opencritic_app/models/game.dart';
-import 'package:opencritic_app/models/hall_of_fame_response.dart';
 import 'package:opencritic_app/widgets/widgets.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -18,11 +15,15 @@ class StaggeredGridView extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           itemCount: games.length,
           itemBuilder: (context, index) {
-            var game = games.values.toList()[index]; // Accessing each game map
+            //var game = games.values.toList()[index]; // Accessing each game map
+            var gameKey = games.keys.toList()[index]; // Accessing each game key
+            var game = games[gameKey]; // Accessing each game map
+
+            var name = gameKey ?? 'Unknown';
 
             // Accessing individual variables within the game map
-            var name = game['name'] ??
-                'Unknown'; // Using '??' to provide a default value if 'name' is null
+            /*var name = game['name'] ??
+                'Unknown';*/ // Using '??' to provide a default value if 'name' is null
             var id = game['id'] ?? 'Unknown';
             var firstReleaseDate = game['firstReleaseDate'];
             var tier = game['tier'] ?? 'Unknown';
@@ -121,29 +122,4 @@ class StaggeredGridView extends StatelessWidget {
   }*/
 
 //WORKS
-  /*@override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Expanded(
-      child: Container(
-        width: double.infinity,
-        //Clase "gridview" aparte"
-        child: MasonryGridView.builder(
-          itemCount: 12,
-          gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2),
-          itemBuilder: (context, index) => Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(6),
-              child: const FadeInImage(
-                  //FadeInImage cambia la imagen por defecto a la intencionada cuando ésta última cargue
-                  placeholder: AssetImage('assets/no-image.jpg'),
-                  image: NetworkImage('assets/no-image.jpg')),
-            ),
-          ),
-        ),
-      ),
-    );
-  }*/
 }

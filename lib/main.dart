@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:opencritic_app/screens/details.dart';
 import 'package:opencritic_app/screens/home.dart';
 import 'package:opencritic_app/providers/oc_provider.dart';
 import 'package:provider/provider.dart';
@@ -34,6 +35,7 @@ class MyHomePage extends StatelessWidget {
       routes: {
         //(_) -> Contexto de datos
         'home': (_) => HomeScreen(),
+        'details': (_) => DetailsScreen()
       },
     );
   }
