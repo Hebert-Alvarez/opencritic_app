@@ -11,12 +11,6 @@ class HomeScreen extends StatelessWidget {
     final gamesProvider = Provider.of<GameProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.search_outlined),
-          )
-        ],
         elevation: 0,
         title: const Text('OpenCritic - Hall of Fame (2023)'),
       ),

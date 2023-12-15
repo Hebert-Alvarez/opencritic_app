@@ -37,7 +37,7 @@ class MyHomePage extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Hall of Fame',
-      initialRoute: 'home',
+      initialRoute: 'login',
       routes: {
         'login': (_) => LoginScreen(),
         'register': (_) => RegisterScreen(),
@@ -54,12 +54,11 @@ class MyHomePage extends StatelessWidget {
           return DetailsScreen(game: game);
         },
       },
-      /*theme: ThemeData.dark().copyWith(
-            scaffoldBackgroundColor: Colors.grey[800],
-            appBarTheme:
-                const AppBarTheme(elevation: 0, color: Colors.redAccent),
-            floatingActionButtonTheme: const FloatingActionButtonThemeData(
-                backgroundColor: Colors.redAccent, elevation: 0))*/
+      theme: ThemeData.light().copyWith(
+          scaffoldBackgroundColor: Colors.grey[400],
+          appBarTheme: AppBarTheme(elevation: 0, color: Colors.grey[800]),
+          floatingActionButtonTheme: FloatingActionButtonThemeData(
+              backgroundColor: Colors.grey[800], elevation: 0)),
     );
   }
 }

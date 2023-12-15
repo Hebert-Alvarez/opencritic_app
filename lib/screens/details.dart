@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:opencritic_app/models/game.dart'; // Replace with the correct import path for your Game model
+import 'package:opencritic_app/models/game.dart';
 
 class DetailsScreen extends StatelessWidget {
   final Map<String, dynamic> game;
@@ -21,7 +21,10 @@ class DetailsScreen extends StatelessWidget {
     var platforms = _getPlatforms(game['Platforms']);
     var description = game['description'] ?? 'No description available';
     var topCriticScore = game['topCriticScore'] ?? 'Unknown';
+    int topCriticScoreInt = topCriticScore.toInt();
     var percentRecommended = game['percentRecommended'] ?? 'Unknown';
+    int percentRecommendedInt = percentRecommended.toInt();
+    var banner = game['images']['banner']['sm'] ?? 'default_image_path.jpg';
 
     return Scaffold(
       appBar: AppBar(
@@ -32,17 +35,25 @@ class DetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: FadeInImage(
+                placeholder: AssetImage('assets/placeholder.jpg'),
+                image: NetworkImage('https://img.opencritic.com/$banner'),
+              ),
+            ),
+            SizedBox(height: 12.0),
             Text(
               name,
               style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 16.0),
+            SizedBox(height: 4.0),
             Text(
               'Developer: $developer',
               style: TextStyle(fontSize: 18.0),
             ),
             Text(
-              'Release Date: $firstReleaseDate',
+              'Release Date: ${firstReleaseDate.toString().substring(0, 10)}',
               style: TextStyle(fontSize: 18.0),
             ),
             Text(
@@ -50,16 +61,35 @@ class DetailsScreen extends StatelessWidget {
               style: TextStyle(fontSize: 18.0),
             ),
             Text(
-              'Description: $description',
+              'Top Critic Score: $topCriticScoreInt',
               style: TextStyle(fontSize: 18.0),
             ),
             Text(
-              'Top Critic Score: $topCriticScore',
+              'Percent Recommended: $percentRecommendedInt%',
               style: TextStyle(fontSize: 18.0),
             ),
-            Text(
-              'Percent Recommended: $percentRecommended',
-              style: TextStyle(fontSize: 18.0),
+            SizedBox(height: 16.0),
+            Container(
+              margin: const EdgeInsets.all(1.0),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(
+                      15.0), // Adjust the radius as needed
+                ),
+                color: Colors.cyan[900],
+                elevation:
+                    5, // You can adjust the elevation for a shadow effect
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Description: $description',
+                    style: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
             ),
           ],
         ),
