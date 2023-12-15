@@ -1,11 +1,10 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:opencritic_app/models/hall_of_fame_response.dart';
 
 class GameProvider extends ChangeNotifier {
-  bool _callApi = false;
+  bool _callApi = true;
   final _baseUrl = 'opencritic-api.p.rapidapi.com';
   //Primera apiKey: agotada
   //final _apiKey = '34fee49374mshf89a0ee9048d2aep15dadbjsn9647e0f64741';
