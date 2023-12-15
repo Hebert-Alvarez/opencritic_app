@@ -33,30 +33,18 @@ class MyHomePage extends StatelessWidget {
       title: 'Hall of Fame',
       initialRoute: 'home',
       routes: {
-        //(_) -> Contexto de datos
         'home': (_) => HomeScreen(),
-        'details': (_) => DetailsScreen()
+        'details': (context) {
+          // Extract the game argument passed through Navigator
+          final Map<String, dynamic> game = ModalRoute.of(context)
+                  ?.settings
+                  .arguments as Map<String, dynamic> ??
+              {};
+
+          // Pass the game argument to DetailsScreen
+          return DetailsScreen(game: game);
+        },
       },
     );
   }
 }
-
-
-/*void Main() {
-  runApp(const MyApp());
-}*/
-
-/*void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  //const MyApp({super.key});
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Home(),
-    );
-  }
-}
-*/

@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            child: StaggeredGridView(games: gamesProvider.mapOfMaps),
+            child: ListViewWidget(games: gamesProvider.mapOfMaps),
           ),
         ],
       ),
