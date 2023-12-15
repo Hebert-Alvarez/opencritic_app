@@ -26,13 +26,10 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
     List<Map<String, String>> favorites = [];
 
     for (String key in favoriteKeys) {
-      // Retrieve the JSON string from SharedPreferences
       String jsonData = faves.getString(key) ?? '{}';
 
-      // Decode the JSON string to a Map<String, dynamic>
       Map<String, dynamic> gameData = json.decode(jsonData);
 
-      // Add the game data to the list
       favorites.add({
         'name': gameData['name'] ?? '',
         'firstReleaseDate': gameData['firstReleaseDate'] ?? '',

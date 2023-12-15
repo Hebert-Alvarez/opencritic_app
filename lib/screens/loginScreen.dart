@@ -28,13 +28,11 @@ class LoginScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     children: [
-                      // Título "Login"
                       Text(
                         'Login',
                         style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       SizedBox(height: 30.0),
-                      // Formulario de inicio de sesión
                       ChangeNotifierProvider(
                         create: (_) => _loginFormProvider,
                         child: _LoginForm(
@@ -47,7 +45,6 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20.0),
-              // Enlace para ir a la pantalla de registro
               TextButton(
                 onPressed: () {
                   Navigator.push(
@@ -85,7 +82,6 @@ class _LoginForm extends StatelessWidget {
       key: loginFormProvider.formKey,
       child: Column(
         children: [
-          // Campo de texto para el correo electrónico
           TextFormField(
             controller: emailController,
             decoration: InputDecoration(
@@ -105,7 +101,6 @@ class _LoginForm extends StatelessWidget {
             },
           ),
           SizedBox(height: 16.0),
-          // Campo de texto para la contraseña
           TextFormField(
             controller: passwordController,
             obscureText: true,
@@ -121,7 +116,6 @@ class _LoginForm extends StatelessWidget {
             },
           ),
           SizedBox(height: 16.0),
-          // Botón de inicio de sesión
           ElevatedButton(
             onPressed: () async {
               if (loginFormProvider.isValidForm()) {
