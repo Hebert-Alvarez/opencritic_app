@@ -45,8 +45,8 @@ class ListViewWidget extends StatelessWidget {
               onTap: () =>
                   Navigator.pushNamed(context, 'details', arguments: game),
               child: ListTile(
-                leading: Image.asset('assets/no-image.jpg'),
-                //leading: Image.network(),
+                //leading: Image.asset('assets/no-image.jpg'),
+                leading: Image.network('https://img.opencritic.com/$boxOg'),
                 title: Text(name),
                 subtitle: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

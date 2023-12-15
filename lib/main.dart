@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:opencritic_app/screens/check_auth_screen.dart';
 import 'package:opencritic_app/screens/details.dart';
 import 'package:opencritic_app/screens/home.dart';
 import 'package:opencritic_app/providers/oc_provider.dart';
+import 'package:opencritic_app/screens/loginScreen.dart';
+import 'package:opencritic_app/screens/registerScreen.dart';
+import 'package:opencritic_app/services/auth_services.dart';
+import 'package:opencritic_app/services/notifications_services.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(const MyApp());
@@ -17,6 +22,7 @@ class MyApp extends StatelessWidget {
           create: (_) => GameProvider(),
           lazy: false,
         ),
+        ChangeNotifierProvider(create: (_) => AuthService()),
       ],
       child: MyHomePage(),
     );
@@ -33,6 +39,9 @@ class MyHomePage extends StatelessWidget {
       title: 'Hall of Fame',
       initialRoute: 'home',
       routes: {
+        'login': (_) => LoginScreen(),
+        'register': (_) => RegisterScreen(),
+        'checking': (_) => CheckAuthScreen(),
         'home': (_) => HomeScreen(),
         'details': (context) {
           // Extract the game argument passed through Navigator
@@ -45,6 +54,12 @@ class MyHomePage extends StatelessWidget {
           return DetailsScreen(game: game);
         },
       },
+      /*theme: ThemeData.dark().copyWith(
+            scaffoldBackgroundColor: Colors.grey[800],
+            appBarTheme:
+                const AppBarTheme(elevation: 0, color: Colors.redAccent),
+            floatingActionButtonTheme: const FloatingActionButtonThemeData(
+                backgroundColor: Colors.redAccent, elevation: 0))*/
     );
   }
 }
