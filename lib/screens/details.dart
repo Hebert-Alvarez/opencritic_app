@@ -9,9 +9,6 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final Map<String, dynamic>? game = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
-
-    // You can access the properties from the 'game' map to display details
     var name = game['name'] ?? 'Unknown';
     var developer = game.containsKey('Companies') &&
             game['Companies'] != null &&
@@ -74,12 +71,10 @@ class DetailsScreen extends StatelessWidget {
               margin: const EdgeInsets.all(1.0),
               child: Card(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                      15.0), // Adjust the radius as needed
+                  borderRadius: BorderRadius.circular(15.0),
                 ),
                 color: Colors.cyan[900],
-                elevation:
-                    5, // You can adjust the elevation for a shadow effect
+                elevation: 5,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
@@ -95,20 +90,19 @@ class DetailsScreen extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      /*floatingActionButton: FloatingActionButton(
         onPressed: () => _saveAsFavorite(context),
-        child: Icon(Icons.favorite), // Replace with your desired icon
-        tooltip: 'Favorites', // Tooltip for the button
-      ),
+        child: Icon(Icons.favorite),
+        tooltip: 'Favorites',
+      ),*/
     );
   }
 
   String _getPlatforms(List<dynamic> platforms) {
-    // Assuming 'Platforms' is a list of maps with 'name' property for each platform
     return platforms.map((platform) => platform['name']).join(', ');
   }
 
-  Future<void> _saveAsFavorite(BuildContext context) async {
+  /*Future<void> _saveAsFavorite(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     final String key = 'favorite_${game['name']}';
@@ -136,5 +130,5 @@ class DetailsScreen extends StatelessWidget {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text('Added to favorites: ${game['name']}'),
     ));
-  }
+  }*/
 }
